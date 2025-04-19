@@ -4,7 +4,7 @@ import * as path from "path";
 import * as _ from "lodash-es";
 import { v4 as uuidv4 } from "uuid";
 
-const contactsPath = path.join(process.cwd(), "src/db/contacts.json");
+const contactsPath = path.join(process.cwd(), "db/contacts.json");
 
 export async function listContacts() {
   try {
@@ -33,11 +33,7 @@ export async function removeContact(contactId) {
   } else return null;
 }
 
-// console.log(await removeContact("AeHIrLTr6JkxGE6SN-0Rw"));
-// console.log(await listContacts());
-
 export async function addContact(name, email, phone) {
-  // ...твій код. Повертає об'єкт доданого контакту (з id).
   const new_contact = { id: uuidv4(), name: name, email: email, phone: phone };
   let data = (await listContacts()) ?? [];
   data.push(new_contact);
@@ -46,7 +42,3 @@ export async function addContact(name, email, phone) {
   });
   return new_contact;
 }
-
-// console.log(
-//   await addContact("Anna Lisner", "a.lisner@newmail.com", "(123) 456-7890")
-// );
