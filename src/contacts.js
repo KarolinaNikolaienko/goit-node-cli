@@ -33,13 +33,20 @@ export async function removeContact(contactId) {
   } else return null;
 }
 
-console.log(await removeContact("AeHIrLTr6JkxGE6SN-0Rw"));
+// console.log(await removeContact("AeHIrLTr6JkxGE6SN-0Rw"));
 // console.log(await listContacts());
 
 export async function addContact(name, email, phone) {
   // ...твій код. Повертає об'єкт доданого контакту (з id).
   const new_contact = { id: uuidv4(), name: name, email: email, phone: phone };
-  console.log(new_contact);
+  let data = (await listContacts()) ?? [];
+  data.push(new_contact);
+  fs.writeFile(contactsPath, JSON.stringify(data), function (err) {
+    if (err) throw err;
+  });
+  return new_contact;
 }
 
-// await addContact("Anna Lisner", "a.lisner@newmail.com", "(123) 456-7890");
+// console.log(
+//   await addContact("Anna Lisner", "a.lisner@newmail.com", "(123) 456-7890")
+// );
