@@ -4,7 +4,7 @@ import * as path from "path";
 import * as _ from "lodash-es";
 import { v4 as uuidv4 } from "uuid";
 
-const contactsPath = path.join(process.cwd(), "db/contacts.json");
+const contactsPath = path.join(process.cwd(), "src/db/contacts.json");
 
 export async function listContacts() {
   try {
